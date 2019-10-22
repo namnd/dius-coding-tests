@@ -3,11 +3,11 @@
 
 ## Usage
 ```sh
-python main.py
+python3 main.py
 ```
 
 
 ## Tests
 ```sh
-python tests/test_match.py
+python3 tests/test_match.py
 ```
