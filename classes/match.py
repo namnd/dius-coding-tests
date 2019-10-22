@@ -24,10 +24,10 @@ class Match():
     # If tie break, player need to reach 7 points
     threshold = 7 if self.tie_break else 4
     if max(self.scores.values()) >= threshold and abs(self.scores[self.p1] - self.scores[self.p2]) >= 2:
-      self.game_won_by(player)
+      self.__game_won_by(player)
 
 
-  def game_won_by(self, player):
+  def __game_won_by(self, player):
     self.sets[player] = self.sets[player] + 1
     if max(self.sets.values()) >= 6:
       if self.tie_break and self.sets[self.p1] != self.sets[self.p2]:
