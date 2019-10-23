@@ -1,6 +1,6 @@
 class Game():
 
-  def __init__(self, p1, p2, tie_break = False):
+  def __init__(self, p1, p2, tie_break=False):
     self.p1 = p1
     self.p2 = p2
     self.scores = {self.p1: 0, self.p2: 0} # keep track of current game scores
@@ -15,6 +15,7 @@ class Game():
     self.scores[player] += 1
     if self.has_winner():
       return player
+    return None
 
 
   def has_winner(self):
@@ -44,6 +45,7 @@ class Game():
     """
     if min(self.scores.values()) >= 3:
       return self.p1 if self.scores[self.p1] > self.scores[self.p2] else self.p2
+    return None
 
 
   def is_started(self):
@@ -56,19 +58,19 @@ class Game():
   def __str__(self):
     if self.is_started():
       if self.tie_break:
-        return ', {}-{}'.format(self.scores[self.p1], self.scores[self.p2])
+        return '{}-{}'.format(self.scores[self.p1], self.scores[self.p2])
       elif self.is_deuce():
-        return ', Deuce'
+        return 'Deuce'
       else:
         advantage_player = self.has_advantage()
         if advantage_player is not None:
-          return ', Advantage {}'.format(advantage_player)
+          return 'Advantage {}'.format(advantage_player)
         else:
           points = {0:0, 1:15, 2:30, 3: 40}
-          return ', {}-{}'.format(points[self.scores[self.p1]], points[self.scores[self.p2]])
+          return '{}-{}'.format(points[self.scores[self.p1]], points[self.scores[self.p2]])
 
     return ""
 
 
   def __repr__(self):
-    return '{}{}'.format(type(self),self.__dict__)
+    return '{}{}'.format(type(self), self.__dict__)

@@ -17,7 +17,7 @@ class Match():
 
 
   def __repr__(self):
-    return '{}{}'.format(type(self),self.__dict__)
+    return '{}{}'.format(type(self), self.__dict__)
 
 
   def score(self):

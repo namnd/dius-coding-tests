@@ -19,7 +19,7 @@ class Set():
     if self.has_winner():
       self.winner = player
     else:
-      self.game = Game(self.p1, self.p2, tie_break = self.is_tie_break())
+      self.game = Game(self.p1, self.p2, tie_break=self.is_tie_break())
 
 
   def has_winner(self):
@@ -47,10 +47,11 @@ class Set():
 
   def __str__(self):
     if self.winner is None:
-      return '{}-{}{}'.format(self.games[self.p1], self.games[self.p2], self.game.__str__())
+      game_output = ', {}'.format(self.game.__str__()) if self.game.is_started() else ""
+      return '{}-{}{}'.format(self.games[self.p1], self.games[self.p2], game_output)
     else:
       return '{} is the winner'.format(self.winner)
 
 
   def __repr__(self):
-    return '{}{}'.format(type(self),self.__dict__)
+    return '{}{}'.format(type(self), self.__dict__)
