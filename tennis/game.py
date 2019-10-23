@@ -43,7 +43,7 @@ class Game():
     and a player has one more point than his opponent,
     the score of the game is "advantage" for the player in the lead.
     """
-    if min(self.scores.values()) >= 3:
+    if min(self.scores.values()) >= 3 and self.scores[self.p1] != self.scores[self.p2]:
       return self.p1 if self.scores[self.p1] > self.scores[self.p2] else self.p2
     return None
 
