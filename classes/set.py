@@ -6,24 +6,43 @@ class Set():
     self.p1 = p1
     self.p2 = p2
     self.games = {self.p1: 0, self.p2: 0} # keep track of winning games
-    self.tie_break = False # flag for tie break set as it has different rule
     self.winner = None # end the game if winner is determined
     self.game = Game(p1, p2)
 
 
   def game_won_by(self, player):
-    self.games[player] = self.games[player] + 1
+    """
+    Increase a winning game for a player
+    If the winner is not found, play a new game
+    """
+    self.games[player] += 1
+    if self.has_winner():
+      self.winner = player
+    else:
+      self.game = Game(self.p1, self.p2, tie_break = self.is_tie_break())
 
-    if max(self.games.values()) >= 6:
-      if self.tie_break and self.games[self.p1] != self.games[self.p2]:
-        self.winner = player
-      elif abs(self.games[self.p1] - self.games[self.p2]) >= 2:
-        self.winner = player
-      elif self.games[self.p1] == self.games[self.p2]:
-        self.tie_break = True
 
-    if self.winner is None:
-      self.game = Game(self.p1, self.p2, tie_break = self.tie_break)
+  def has_winner(self):
+    """
+    A player wins a set by winning at least 6 games and
+    at least 2 games more than the opponent.
+    Or
+    if the game is tie break and win by margin of 1 game
+    """
+    if max(self.games.values()) >= 6 and abs(self.games[self.p1] - self.games[self.p2]) >= 2:
+      return True
+    elif max(self.games.values()) >= 7 and self.games[self.p1] != self.games[self.p2]:
+      return True
+    else:
+      return False
+
+
+  def is_tie_break(self):
+    """
+    The set is in tie break mode
+    if both players win more than 6 games and have same winning games
+    """
+    return self.games[self.p1] == self.games[self.p2] and self.games[self.p1] >= 6
 
 
   def __str__(self):
