@@ -1,6 +1,6 @@
 import unittest, sys
 sys.path.append('.')
-from classes.match import Match
+from tennis.match import Match
 
 class MatchTest(unittest.TestCase):
 

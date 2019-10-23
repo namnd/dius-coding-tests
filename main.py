@@ -1,4 +1,4 @@
-from classes.match import Match
+from tennis.match import Match
 
 match = Match("player 1", "player 2")
 match.point_won_by("player 1")
