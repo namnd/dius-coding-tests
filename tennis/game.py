@@ -31,7 +31,7 @@ class Game:
         """
         threshold = 7 if self.tie_break else 4
         return max(self.scores.values()) >= threshold and \
-               abs(self.scores[self.p_1] - self.scores[self.p_2]) >= 2
+            abs(self.scores[self.p_1] - self.scores[self.p_2]) >= 2
 
     def is_deuce(self):
         """
@@ -73,6 +73,3 @@ class Game:
                                             points[self.scores[self.p_2]])
 
         return output
-
-    def __repr__(self):
-        return '{}{}'.format(type(self), self.__dict__)

@@ -28,6 +28,3 @@ class Match:
 
     def __str__(self):
         return self.set.__str__()
-
-    def __repr__(self):
-        return '{}{}'.format(type(self), self.__dict__)

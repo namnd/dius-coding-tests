@@ -55,6 +55,3 @@ class Set:
             output = '{} is the winner'.format(self.winner)
 
         return output
-
-    def __repr__(self):
-        return '{}{}'.format(type(self), self.__dict__)
