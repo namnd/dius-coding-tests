@@ -4,7 +4,6 @@ match = Match("player 1", "player 2")
 match.point_won_by("player 1")
 match.point_won_by("player 2")
 # this will return "0-0, 15-15"
-match.score()
 
 match.point_won_by("player 1")
 match.point_won_by("player 1")
